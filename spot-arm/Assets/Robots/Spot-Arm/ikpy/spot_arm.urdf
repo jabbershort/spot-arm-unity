@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<robot name="spot_arm">
+  <material name="Black">
+    <color rgba="0 0 0 1" />
+  </material>
+  <material name="Yellow">
+    <color rgba="1 0.99 0 1" />
+  </material>
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0325" />
+      <mass value="5.7707915306" />
+      <inertia ixx="0.00722600007429719" ixy="0" ixz="0" iyy="0.00722600007429719" iyz="0" izz="0.0103869996964931" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" />
+      <geometry>
+        <mesh filename="package://meshes/base_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" />
+      <geometry>
+        <mesh filename="package://meshes/base_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Part0_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.05072 0 0.046769" />
+      <mass value="6.9258275032" />
+      <inertia ixx="0.0134062925353646" ixy="0" ixz="-2.42260011873441E-06" iyy="0.0103870052844286" iyz="0" izz="0.0113097121939063" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="0 0 -0.065" />
+      <geometry>
+        <mesh filename="package://meshes/Part0_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="0 0 -0.065" />
+      <geometry>
+        <mesh filename="package://meshes/Part0_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Part1_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.01631 0.175409 0" />
+      <mass value="12.65828228" />
+      <inertia ixx="0.129791006445885" ixy="0.00262502138502896" ixz="-3.13252118688823E-10" iyy="0.0100400159135461" iyz="-6.86298153723675E-12" izz="0.129492089152336" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="-0.015 0 -0.115" />
+      <geometry>
+        <mesh filename="package://meshes/Part1_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Yellow">
+        <color rgba="1 0.99 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="-0.015 0 -0.115" />
+      <geometry>
+        <mesh filename="package://meshes/Part1_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Part2_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.015622 0.066656 -0.058074" />
+      <mass value="7.36845541" />
+      <inertia ixx="0.0180730018764734" ixy="0.000915000156965107" ixz="-0.00101000140421093" iyy="0.011789002455771" iyz="0.00372800067998469" izz="0.0166700016707182" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="-0.017 -0.3125 -0.115" />
+      <geometry>
+        <mesh filename="package://meshes/Part2_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="-0.017 -0.3125 -0.115" />
+      <geometry>
+        <mesh filename="package://meshes/Part2_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Part3_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.009115 0.126061 0" />
+      <mass value="10.952460289" />
+      <inertia ixx="0.0667889937758446" ixy="0.0119709968566895" ixz="-2.03457890535219E-08" iyy="0.0149930063635111" iyz="-2.1710053754731E-09" izz="0.0719490349292755" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.001 -0.4505 -0.0475" />
+      <geometry>
+        <mesh filename="package://meshes/Part3_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Yellow">
+        <color rgba="1 0.99 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.001 -0.4505 -0.0475" />
+      <geometry>
+        <mesh filename="package://meshes/Part3_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Part4_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.03955 0.03472 0" />
+      <mass value="3.2278802395" />
+      <inertia ixx="0.00339000136591494" ixy="-2.10000252991449E-05" ixz="-8.00277275003758E-11" iyy="0.00224200007505715" iyz="-1.58555677268191E-13" izz="0.00343899871222675" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.0485 -0.69859 -0.0475" />
+      <geometry>
+        <mesh filename="package://meshes/Part4_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.0485 -0.69859 -0.0475" />
+      <geometry>
+        <mesh filename="package://meshes/Part4_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="gripper_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0.070514 0.017123" />
+      <mass value="5.9780006409" />
+      <inertia ixx="0.0172299817204475" ixy="-2.25767321504478E-12" ixz="5.55935852908362E-12" iyy="0.00734000280499458" iyz="-0.0038710068911314" izz="0.0153000149875879" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.0085 -0.77959 -0.0475" />
+      <geometry>
+        <mesh filename="package://meshes/gripper_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Yellow">
+        <color rgba="1 0.99 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.0085 -0.77959 -0.0475" />
+      <geometry>
+        <mesh filename="package://meshes/gripper_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="finger_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.86359 0.098621 0.008502" />
+      <mass value="1.7123618126" />
+      <inertia ixx="0.00212900037877262" ixy="-1.48538438493606E-11" ixz="-2.58913224193691E-10" iyy="0.00168100011069328" iyz="0.000162000011187047" izz="0.00340300030075014" />
+    </inertial>
+    <visual>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.87709 -0.823505 -0.0185" />
+      <geometry>
+        <mesh filename="package://meshes/finger_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Yellow">
+        <color rgba="1 0.99 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 4.712389 -1.570796" xyz="0.87709 -0.823505 -0.0185" />
+      <geometry>
+        <mesh filename="package://meshes/finger_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Rev9" type="revolute">
+    <origin xyz="0 0 0.065" />
+    <parent link="base_link" />
+    <child link="Part0_1" />
+    <limit lower="-3.14159289556997" upper="2.61799412402766" effort="100" velocity="7" />
+  </joint>
+  <joint name="Rev8" type="revolute">
+    <origin xyz="0.015 0 0.05" />
+    <parent link="Part0_1" />
+    <child link="Part1_1" />
+    <limit lower="0" upper="3.66519140079618" effort="100" velocity="7" />
+  </joint>
+  <joint name="Rev11" type="revolute">
+    <origin xyz="0.002 0.3125 0" />
+    <parent link="Part1_1" />
+    <child link="Part2_1" />
+    <limit lower="0" upper="3.14159262925386" effort="100" velocity="7" />
+  </joint>
+  <joint name="Rev3" type="revolute">
+    <origin xyz="-0.018 0.138 -0.0675" />
+    <parent link="Part2_1" />
+    <child link="Part3_1" />
+    <limit lower="-2.8797929771666" upper="2.8797929771666" effort="100" velocity="7" />
+  </joint>
+  <joint name="Rev10" type="revolute">
+    <origin xyz="-0.0475 0.24809 0" />
+    <parent link="Part3_1" />
+    <child link="Part4_1" />
+    <limit lower="-1.83259570039809" upper="1.83259570039809" effort="100" velocity="7" />
+  </joint>
+  <joint name="Rev6" type="revolute">
+    <origin xyz="0.04 0.0818 0" />
+    <parent link="Part4_1" />
+    <child link="gripper_1" />
+    <limit lower="-2.96705997172253" upper="2.96705997172253" effort="100" velocity="7" />
+  </joint>
+  <joint name="Rev7" type="revolute">
+    <origin xyz="-0.86859 0.043915 -0.029" />
+    <parent link="gripper_1" />
+    <child link="finger_1" />
+    <limit lower="-1.39626299130533" upper="0.349066014142441" effort="100" velocity="7" />
+  </joint>
+  <transmission name="Rev3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev3_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<transmission name="Rev6_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev6">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev6_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<transmission name="Rev7_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev7">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev7_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<transmission name="Rev8_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev8">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev8_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<transmission name="Rev9_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev9">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev9_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<transmission name="Rev10_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev10">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev10_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<transmission name="Rev11_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev11">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev11_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+<gazebo>
+  <plugin filename="libgazebo_ros_control.so" name="control" />
+</gazebo>
+<gazebo reference="base_link">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+<gazebo reference="Part3_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+<gazebo reference="gripper_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+<gazebo reference="finger_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+<gazebo reference="Part1_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+<gazebo reference="Part0_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+<gazebo reference="Part4_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+<gazebo reference="Part2_1">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+</robot>
