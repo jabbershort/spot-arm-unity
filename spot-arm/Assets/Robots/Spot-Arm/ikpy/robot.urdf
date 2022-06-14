@@ -200,7 +200,7 @@
   </link>
 
   <joint name="gripper_joint" type="revolute">
-    <origin rpy="0 0 0" xyz="-0.86859 0.043915 -0.029"/>
+    <origin rpy="0 0 0" xyz="0 0.043915 -0.029"/>
     <parent link="gripper_1"/>
     <child link="finger_1"/>
     <axis xyz="1.0 -0.0 0.0"/>
@@ -209,7 +209,7 @@
 
   <link name="finger_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.8635899028063472 0.09862056591557622 0.00850232975194119"/>
+      <origin rpy="0 0 0" xyz="0 0.09862056591557622 0.00850232975194119"/>
       <mass value="1.71236178687828"/>
       <inertia ixx="0.002129" ixy="0.0" ixz="-0.0" iyy="0.001681" iyz="0.000162" izz="0.003403"/>
     </inertial>
