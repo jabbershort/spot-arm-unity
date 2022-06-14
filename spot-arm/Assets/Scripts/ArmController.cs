@@ -38,8 +38,8 @@ namespace spot
             {
                 jointAngles[i] = Mathf.Rad2Deg * joints[i].jointPosition[0];
             }
-            pose = new Pose(jointAngles);
 
+            pose = new Pose(jointAngles,0);
         }
 
         public void jumpToPose(spot.Pose p)
