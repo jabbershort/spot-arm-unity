@@ -14,6 +14,7 @@ namespace spot
         private float[] jointAngles;
         public spot.Pose pose;
 
+
         void Start()
         {
             arm = gameObject;
@@ -28,13 +29,14 @@ namespace spot
         // Update is called once per frame
         void Update()
         {
-            // updateJointAngles();
-            // Debug.Log(pose.ToString());
+            updateJointAngles();
+            Debug.Log(pose.ToString());
+            Debug.Log(pose.endEffectorPosition.ToString());
         }
 
         void updateJointAngles()
         {
-            for (int i = 1;i<joints.Length;i++)
+            for (int i = 1;i<joints.Length-1;i++)
             {
                 jointAngles[i] = Mathf.Rad2Deg * joints[i].jointPosition[0];
             }
@@ -52,6 +54,11 @@ namespace spot
                 drive.target = p.jointAngles[i];
                 joints[i+1].xDrive = drive;
             }
+
+            joints[7].jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*p.gripper);
+            ArticulationDrive gripperDrive = joints[7].xDrive;
+            gripperDrive.target = p.gripper;
+            joints[7].xDrive = gripperDrive;
         }
 
         public void driveToPose(spot.Pose p)
@@ -63,6 +70,9 @@ namespace spot
                 drive.target = p.jointAngles[i];
                 joints[i+1].xDrive = drive;
             }
+            ArticulationDrive gripperDrive = joints[7].xDrive;
+            gripperDrive.target = p.gripper;
+            joints[7].xDrive = gripperDrive;
         }
     }
 }

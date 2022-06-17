@@ -27,7 +27,7 @@ def convert_to_radians(angles):
 
 def get_fk_result(angles: list):
     script_path = os.path.dirname(os.path.abspath(__file__))
-    chain = Chain.from_urdf_file(script_path+"//robot.urdf")
+    chain = Chain.from_urdf_file(script_path+"//robot2.urdf")
     chain.active_links_mask = [False,True,True,True,True,True,True,False]
     angles.insert(0,0)
     angles.append(0)

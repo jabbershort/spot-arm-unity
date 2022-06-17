@@ -8,6 +8,7 @@ namespace spot
         public float[] jointAngles;
         public float gripper;
         public string name;
+        public EEFPosition endEffectorPosition {get {return _generateEEF();} private set{}}
 
         public Pose(float[] angles,float grip, string name = "")
         {
@@ -29,6 +30,12 @@ namespace spot
             return s;
         }
 
+        private EEFPosition _generateEEF()
+        {
+            EEFPosition pos = Kinematics.ForwardKinematics(this);
+            return pos;
+        }
+
         public void SavePose()
         {
 
@@ -43,10 +50,10 @@ namespace spot
             return poses;
         }
 
-        public static Pose retracted = new Pose(new float[6]{-180,0,180,0,0,0},20);
+        public static Pose retracted = new Pose(new float[6]{0,180,180,0,0,0},20);
         public static Pose straight = new Pose(new float[6]{0,0,0,0,0,0},0);
 
-        public static Pose home = new Pose(new float[6]{-180,-45,150,0,15,0},-45);
+        public static Pose home = new Pose(new float[6]{0,150,150,0,15,0},-45);
 
     }
 }

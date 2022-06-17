@@ -28,7 +28,7 @@ def convert_to_radians(angles):
 
 def get_ik_result(pos,rot):
     script_path = os.path.dirname(os.path.abspath(__file__))
-    chain = Chain.from_urdf_file(script_path+"//robot.urdf")
+    chain = Chain.from_urdf_file(script_path+"//robot2.urdf")
     chain.active_links_mask = [False,True,True,True,True,True,True,False]
     angles = chain.inverse_kinematics(target_position=pos,target_orientation=rot,orientation_mode="all")
     return angles
