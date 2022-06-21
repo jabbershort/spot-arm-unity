@@ -30,7 +30,8 @@ def convert_to_radians(angles):
     return rads
 
 script_path = os.path.dirname(os.path.abspath(__file__))
-my_chain = Chain.from_urdf_file(script_path+"//robot2.urdf")
+my_chain = Chain.from_urdf_file(script_path+"//arm.urdf")
+print(my_chain)
 my_chain.active_links_mask = [False,True,True,True,True,True,True,False]
 
 angles = [0,0,0,0,0,0]

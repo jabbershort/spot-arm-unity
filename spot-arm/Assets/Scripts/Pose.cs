@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-
+using Newtonsoft;
+using System.IO;
 namespace spot
 {
     public class Pose
@@ -8,7 +9,7 @@ namespace spot
         public float[] jointAngles;
         public float gripper;
         public string name;
-        public EEFPosition endEffectorPosition {get {return _generateEEF();} private set{}}
+        // public EEFPosition endEffectorPosition {get {return _generateEEF();} private set{}}
 
         public Pose(float[] angles,float grip, string name = "")
         {
@@ -38,22 +39,47 @@ namespace spot
 
         public void SavePose()
         {
+            List<Pose> poses = GetSavedPoses();
 
+            poses.Add(this);
+            SavePoses(poses);
+        }
+
+        private static void SavePoses(List<Pose> poses)
+        {
+            File.WriteAllText(UnityEngine.Application.dataPath+"/StreamingAssets/saved_poses.json",Newtonsoft.Json.JsonConvert.SerializeObject(poses));
+        }
+
+        public static Pose GetPose(string n)
+        {
+            List<Pose> poses = GetSavedPoses();
+
+            foreach(Pose p in poses)
+            {
+                if (p.name == n)
+                {
+                    return p;
+                }
+            }
+            return null;
         }
 
         public static List<Pose> GetSavedPoses()
         {
             List<Pose> poses = new List<Pose>();
             
-            // fetch poses from file
-
+            poses = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Pose>>(File.ReadAllText(UnityEngine.Application.dataPath+"/StreamingAssets/saved_poses.json"));
+            foreach(Pose p in poses)
+            {
+                UnityEngine.Debug.Log("Loading pose: "+p.name);
+            }
             return poses;
         }
 
-        public static Pose retracted = new Pose(new float[6]{0,180,180,0,0,0},20);
-        public static Pose straight = new Pose(new float[6]{0,0,0,0,0,0},0);
+        public static Pose retracted = new Pose(new float[7]{0,-180,0,180,0,0,0},0,"retracted");
+        public static Pose straight = new Pose(new float[7]{0,0,0,0,0,0,0},0,"straight");
 
-        public static Pose home = new Pose(new float[6]{0,150,150,0,15,0},-45);
+        public static Pose home = new Pose(new float[7]{0,-45,0,90,0,-45,0},-45,"home");
 
     }
 }

@@ -1,0 +1,1 @@
+[{"jointAngles":[0.0,-180.0,0.0,180.0,0.0,0.0,0.0],"gripper":0.0,"name":"retracted"},{"jointAngles":[0.0,-45.0,0.0,90.0,0.0,-45.0,0.0],"gripper":-45.0,"name":"home"},{"jointAngles":[0.0,0.0,0.0,0.0,0.0,0.0,0.0],"gripper":0.0,"name":"straight"}]
