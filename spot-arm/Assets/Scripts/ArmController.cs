@@ -7,7 +7,9 @@ namespace spot
 {
     public class ArmController : MonoBehaviour
     {
-        public ArticulationBody[] joints;
+        private ArticulationBody[] joints;
+        private ArticulationBody[] fullArticulationChain;
+        private ArticulationBody gripper;
 
         private GameObject arm;
 
@@ -20,17 +22,25 @@ namespace spot
         void Awake()
         {
             arm = gameObject;
-            joints = arm.GetComponentsInChildren<ArticulationBody>();
-            jointAngles = new float[7];
-            angleMinVals = new float[7];
-            angleMaxVals = new float[7];
+            fullArticulationChain = arm.GetComponentsInChildren<ArticulationBody>();
+            joints = new ArticulationBody[6];
+            joints[0]=fullArticulationChain[1];
+            joints[1]=fullArticulationChain[2];
+            joints[2]=fullArticulationChain[4];
+            joints[3]=fullArticulationChain[5];
+            joints[4]=fullArticulationChain[6];
+            joints[5]=fullArticulationChain[7];
+            gripper = fullArticulationChain[8];
+            jointAngles = new float[6];
+            angleMinVals = new float[6];
+            angleMaxVals = new float[6];
             updateJointAngles();
 
-            for (int i = 1;i<8;i++)
+            for(int i = 0;i<joints.Length;i++)
             {   
-                angleMaxVals[i-1] = (joints[i].xDrive.upperLimit);
-                angleMinVals[i-1] = (joints[i].xDrive.lowerLimit);
-                Debug.Log(string.Format("Joint limits for {0} are {1} to {2}.",joints[i].name,joints[i].xDrive.upperLimit,joints[i].xDrive.lowerLimit));
+                angleMaxVals[i] = (joints[i].xDrive.upperLimit);
+                angleMinVals[i] = (joints[i].xDrive.lowerLimit);
+                // Debug.Log(string.Format("Joint limits for {0} are {1} to {2}.",joints[i].name,joints[i].xDrive.upperLimit,joints[i].xDrive.lowerLimit));
             }
             Application.targetFrameRate = 30;
         }
@@ -59,10 +69,10 @@ namespace spot
 
         void updateJointAngles()
         {
-            for (int i = 1;i<8;i++)
+            for (int i = 0;i<joints.Length;i++)
             {
                 // Debug.Log(string.Format("Joint: {0} at {1}.",joints[i].name,joints[i].jointPosition[0]));
-                jointAngles[i-1] = Mathf.Rad2Deg * joints[i].jointPosition[0];
+                jointAngles[i] = Mathf.Rad2Deg * joints[i].jointPosition[0];
             }
             pose = new Pose(jointAngles,0);
         }
@@ -72,16 +82,16 @@ namespace spot
             Debug.Log("Jumping to pose: "+p.ToString());
             for (int i = 0;i<p.jointAngles.Length;i++)
             {
-                Debug.Log(string.Format("Driving joint {0} to {1}.",joints[i+1],p.jointAngles[i]));
-                joints[i+1].jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*p.jointAngles[i]);
-                ArticulationDrive drive = joints[i+1].xDrive;
+                // Debug.Log(string.Format("Driving joint {0} to {1}.",joints[i+1],p.jointAngles[i]));
+                joints[i].jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*p.jointAngles[i]);
+                ArticulationDrive drive = joints[i].xDrive;
                 drive.target = p.jointAngles[i];
-                joints[i+1].xDrive = drive;
+                joints[i].xDrive = drive;
             }
-            joints[8].jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*p.gripper);
-            ArticulationDrive gripperDrive = joints[8].xDrive;
+            gripper.jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*p.gripper);
+            ArticulationDrive gripperDrive =gripper.xDrive;
             gripperDrive.target = p.gripper;
-            joints[8].xDrive = gripperDrive;
+            gripper.xDrive = gripperDrive;
         }
 
 
@@ -94,22 +104,23 @@ namespace spot
 
             for (int i = 0;i<p.jointAngles.Length;i++)
             {
-                Debug.Log(string.Format("Driving joint {0} to {1}.",joints[i+1],p.jointAngles[i]));
-                ArticulationDrive drive = joints[i+1].xDrive;
+                Debug.Log(string.Format("Driving joint {0} to {1}.",joints[i],p.jointAngles[i]));
+                ArticulationDrive drive = joints[i].xDrive;
                 drive.target = p.jointAngles[i];
-                joints[i+1].xDrive = drive;
+                joints[i].xDrive = drive;
             }
-            ArticulationDrive gripperDrive = joints[8].xDrive;
+
+            ArticulationDrive gripperDrive = gripper.xDrive;
             gripperDrive.target = p.gripper;
-            joints[8].xDrive = gripperDrive;
+            gripper.xDrive = gripperDrive;
         }
 
         public void SetJointToPosition(int jointIndex, float val)
         {
-            joints[jointIndex+1].GetComponent<ArticulationBody>().jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*val);
-            ArticulationDrive drive = joints[jointIndex+1].xDrive;
-            drive.target = Mathf.LerpAngle(jointAngles[jointIndex+1], val, 1.0f);
-            joints[jointIndex+1].xDrive = drive;
+            joints[jointIndex].GetComponent<ArticulationBody>().jointPosition = new ArticulationReducedSpace(Mathf.Deg2Rad*val);
+            ArticulationDrive drive = joints[jointIndex].xDrive;
+            drive.target = Mathf.LerpAngle(jointAngles[jointIndex], val, 1.0f);
+            joints[jointIndex].xDrive = drive;
         }
     }
 }

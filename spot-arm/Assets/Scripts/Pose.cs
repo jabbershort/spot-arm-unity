@@ -31,11 +31,11 @@ namespace spot
             return s;
         }
 
-        private EEFPosition _generateEEF()
-        {
-            EEFPosition pos = Kinematics.ForwardKinematics(this);
-            return pos;
-        }
+        // private EEFPosition _generateEEF()
+        // {
+        //     EEFPosition pos = Kinematics.ForwardKinematics(this);
+        //     return pos;
+        // }
 
         public void SavePose()
         {
@@ -43,6 +43,11 @@ namespace spot
 
             poses.Add(this);
             SavePoses(poses);
+        }
+
+        public double[] JointsAsDouble()
+        {
+            return Array.ConvertAll(jointAngles, x => (double)x);
         }
 
         private static void SavePoses(List<Pose> poses)
@@ -69,17 +74,17 @@ namespace spot
             List<Pose> poses = new List<Pose>();
             
             poses = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Pose>>(File.ReadAllText(UnityEngine.Application.dataPath+"/StreamingAssets/saved_poses.json"));
-            foreach(Pose p in poses)
-            {
-                UnityEngine.Debug.Log("Loading pose: "+p.name);
-            }
+            // foreach(Pose p in poses)
+            // {
+            //     UnityEngine.Debug.Log("Loading pose: "+p.name);
+            // }
             return poses;
         }
 
-        public static Pose retracted = new Pose(new float[7]{0,-180,0,180,0,0,0},0,"retracted");
-        public static Pose straight = new Pose(new float[7]{0,0,0,0,0,0,0},0,"straight");
+        public static Pose retracted = new Pose(new float[6]{0,-180,180,0,0,0},0,"retracted");
+        public static Pose straight = new Pose(new float[6]{0,0,0,0,0,0},0,"straight");
 
-        public static Pose home = new Pose(new float[7]{0,-45,0,90,0,-45,0},-45,"home");
+        public static Pose home = new Pose(new float[6]{0,-45,90,0,-45,0},-45,"home");
 
     }
 }

@@ -6,6 +6,8 @@ namespace spot
     public class UI : MonoBehaviour
     {
         public Dropdown dropdown;
+        public InputField textbox;
+        public Button saveButton;
         
         public GameObject arm;
         void Start()
@@ -15,9 +17,15 @@ namespace spot
 
         void Update()
         {
-
+            if (textbox.text == null || textbox.text == "")
+            {
+                saveButton.interactable = false;
+            }
+            else
+            {
+                saveButton.interactable =true;
+            }
         }
-
 
         private void InitiliseDropDown()
         {
@@ -29,6 +37,29 @@ namespace spot
                 opts.Add(new Dropdown.OptionData(p.name));
             }
             dropdown.AddOptions(opts);
+        }
+
+        private void UpdateDropdown()
+        {
+            List<Pose> poses = spot.Pose.GetSavedPoses();
+            dropdown.ClearOptions();
+            List<Dropdown.OptionData> opts = new List<Dropdown.OptionData>();
+            foreach(Pose p in poses)
+            {
+                opts.Add(new Dropdown.OptionData(p.name));
+            }
+            dropdown.AddOptions(opts);
+        }
+
+
+
+        public void SavePose()
+        {
+            Pose p = arm.GetComponent<ArmController>().pose;
+            p.name = textbox.text;
+            p.SavePose();
+            textbox.text = "";
+            UpdateDropdown();
         }
 
         public void Jump()

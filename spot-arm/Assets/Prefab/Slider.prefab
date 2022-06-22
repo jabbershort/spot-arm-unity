@@ -373,7 +373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 394e3a52e82bbc94f9bb71ab0fc67213, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
@@ -399,11 +399,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: -1
+  m_MinWidth: 100
   m_MinHeight: -1
-  m_PreferredWidth: -1
+  m_PreferredWidth: 75
   m_PreferredHeight: 25
-  m_FlexibleWidth: 1
+  m_FlexibleWidth: -1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
 --- !u!1 &2699643316080548735
@@ -417,7 +417,6 @@ GameObject:
   - component: {fileID: 2699643316080548732}
   - component: {fileID: 2699643316080548610}
   - component: {fileID: 2699643316080548733}
-  - component: {fileID: 8693746720976996441}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -492,18 +491,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &8693746720976996441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699643316080548735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6146e1e8c73e1d5498be32a5d62518e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2699643316120823009
 GameObject:
   m_ObjectHideFlags: 0
