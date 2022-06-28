@@ -11,8 +11,11 @@ namespace spot
     public class Kinematics
     {
         [DllImport("ikfast_robot.dll")]
-        private static extern bool ComputeFk(double[] joints, ref double[] eetrans, ref double[] eerot);
+        private static extern bool ComputeFk(double[] joints, double[] eetrans, double[] eerot);
 
+        // TODO: Fix the compute IK function, what type is solutions?
+        // [DllImport("ikfast_robot.dll")]
+        // private static extern bool ComputeIk(double[] eetrans, double[] eerot, double[] pfree, solutions)
 
         [DllImport("ikfast_robot.dll")]
         private static extern int GetNumFreeParameters();
@@ -81,7 +84,7 @@ namespace spot
         {
             double[] eetrans = new double[3];
             double[] eerot = new double[9];
-            bool result = ComputeFk(p.JointsAsDouble(),ref eetrans,ref eerot);
+            bool result = ComputeFk(p.JointsAsDouble(),eetrans,eerot);
             float[] rot1 = new float[3]{(float)eerot[0],(float)eerot[1],(float)eerot[2]};
             float[] rot2 = new float[3]{(float)eerot[3],(float)eerot[4],(float)eerot[5]};
             float[] rot3 = new float[3]{(float)eerot[6],(float)eerot[7],(float)eerot[8]};
@@ -104,17 +107,20 @@ namespace spot
             Debug.Log(GetIkRealSize());
             // Debug.Log(GetIkFastVersion());
             Debug.Log(GetIkType());
-            double[] joints = new double[7]{0,0,0,0,0,0,0};
-            double[] eetrans= new double[3];
-            double[] eerot= new double[9];
-            bool result = ComputeFk(joints,ref eetrans,ref eerot);
-            Debug.Log(result);
-            Debug.Log(string.Format("EEtrans: {0}, {1}, {2}.",eetrans[0],eetrans[1],eetrans[2]));
-            Debug.Log(string.Format("EErot: {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}",
-                eerot[0],eerot[1],eerot[2],
-                eerot[3],eerot[4],eerot[5],
-                eerot[6],eerot[7],eerot[8]
-                ));
+            double[] joints = new double[7];
+            double[] eetrans= new double[3]{1.15125,0,0.27782};
+            double[] eerot= new double[9]{1,0,0,0,1,0,0,0,1};
+            double[] pfree = new double[7]{0,0,0,0,0,0,0};
+            // bool result = ComputeIk(eetrans,eerot)
+            // bool result = ComputeFk(joints,eetrans,eerot);
+            // Debug.Log(result);
+            // Debug.Log(string.Format("EEtrans: {0}, {1}, {2}.",eetrans[0],eetrans[1],eetrans[2]));
+            // Debug.Log(string.Format("EErot: {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}",
+            //     eerot[0],eerot[1],eerot[2],
+            //     eerot[3],eerot[4],eerot[5],
+            //     eerot[6],eerot[7],eerot[8]
+            //     ));
+
         }
 
     
